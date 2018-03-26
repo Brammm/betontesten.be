@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+    bitcode-nginx:
+        image: brammm/beton-nginx
+        networks:
+            - web
+        labels:
+          - "traefik.backend=beton-nginx"
+          - "traefik.docker.network=web"
+          - "traefik.frontend.rule=Host:betontesten.be"
+          - "traefik.enable=true"
+          - "traefik.port=80"
+          - "traefik.default.protocol=http"
+
+networks:
+  web:
+    external: true
